@@ -25,6 +25,17 @@ function App() {
     setTodos((prev) => prev.map((prevTodo) => (prevTodo === id ? {...prevTodo , completed : !prevTodo.completed} : prevTodo)))
   };
 
+  useEffect(()=> {
+     const todos = JSON.parse( localStorage.getItem("todos"))
+     if(todos && todos.length > 0){
+        setTodos(todos)
+     }
+  } , []);  
+
+  useEffect(()=> {
+    localStorage.setItem("todos" , JSON.stringify(todos))
+  } , [todos]);
+
   return (
     <TodoProvider value={{ todos , addTodo , deleteTodo , updateTodo , toggleComplete}}>
       <div className="rounded-r-lg px-3 py-1 bg-gradient-to-r from-sky-500 to-teal-500 text-white hover:from-sky-600 hover:to-teal-600 shrink-0 min-h-screen  ">
