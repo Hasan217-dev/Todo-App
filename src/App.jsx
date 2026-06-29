@@ -21,8 +21,8 @@ function App() {
     setTodos((prev) => prev.filter((prevTodo) => (prevTodo.id !== id)))
   }
 
-  const toggleCompelet = (id) => {
-    setTodos((prev) => prev.map((prevTodo) => (prevTodo === id ? {...prevTodo , completed : !prevTodo.completed} : prevTodo)))
+  const toggleComplete = (id) => {
+    setTodos((prev) => prev.map((prevTodo) => (prevTodo.id === id ? {...prevTodo , completed : !prevTodo.completed} : prevTodo)))
   };
 
   useEffect(()=> {
